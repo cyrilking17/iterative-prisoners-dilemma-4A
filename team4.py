@@ -1,3 +1,4 @@
+import random
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -6,27 +7,37 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'save' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'no u' # Only 10 chars displayed.
+strategy_name = 'predict and counter'
+
+strategy_description = 'Predict next move and counter attack'
+
     
 def move(my_history, their_history, my_score, their_score):
+  Nb = 0
+  Nc = 0
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
     
     Make my move.
     Returns 'c' or 'b'. 
     '''
-
-    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
-    # their_history: a string of the same length as history, possibly empty. 
-    # The first round between these two players is my_history[0] and their_history[0].
-    # The most recent round is my_history[-1] and their_history[-1].
-    
-    # Analyze my_history and their_history and/or my_score and their_score.
-    # Decide whether to return 'c' or 'b'.
-
-    if len(my history)%3 == 0:
+    for x in ipairs(their_history):
+        if x == 'b':
+            Nb += 1
+        else:
+            Nc += 1
+    if len(my_history)=<5: 
         return 'c'
-    else:
+    elif len(my_history)>5 and len(my_history)=<10:
         return 'b'
+    elif len(my_history) > 10:
+        if Nb > Nc:
+            return 'b'
+        elif Nc > Nb:
+            return 'c'
+        else:
+            if random.randint(0,100) <= 50:
+                return 'c'
+            else:
+                return 'b'
